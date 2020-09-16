@@ -17,23 +17,20 @@ public class MaximumValue {
 
     public static double getValue(int capacity, int[] value, int[] weight) {
         double bag = 0.00;
-//        while (capacity > 0) {
             for (int i = 0; i < weight.length; i++) {
                 int bestItem = bestValue(value, weight);
-                System.out.println(bestItem);
-                if (weight[bestItem] < capacity) {
-                    bag = bag + value[bestItem];
+                if (weight[bestItem] <= capacity) {
+                    bag += value[bestItem];
                     capacity = capacity - weight[bestItem];
-                    weight[bestItem] = 0;
-                }
-                if (weight[bestItem] > capacity) {
-                    value[bestItem] = value[bestItem] * (capacity / weight[bestItem]);
-                    bag = bag + value[bestItem];
+                    weight[bestItem] = -1;
+                } else if (weight[bestItem] > capacity) {
+                    System.out.println("HITTTT");
+                    double frac = (double) capacity/weight[bestItem];
+                    bag += value[bestItem] * frac;
                     capacity = 0;
-                    weight[bestItem] = 0;
+                    weight[bestItem] = -1;
                 }
             }
- //
         return bag;
     }
 
