@@ -24,7 +24,6 @@ public class MaximumValue {
                     capacity = capacity - weight[bestItem];
                     weight[bestItem] = -1;
                 } else if (weight[bestItem] > capacity) {
-                    System.out.println("HITTTT");
                     double frac = (double) capacity/weight[bestItem];
                     bag += value[bestItem] * frac;
                     capacity = 0;
